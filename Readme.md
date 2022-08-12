@@ -1,7 +1,7 @@
 # Личный проект «TaskForce»
 
 * Студент: [Алексей Лугачев](https://up.htmlacademy.ru/yii/4/user/31011).
-* Наставник: `Неизвестно`.
+* Наставник: [Александр Смиркин](https://htmlacademy.ru/profile/id1411277).
 
 ---
 
