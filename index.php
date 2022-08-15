@@ -2,5 +2,6 @@
 
 require_once ('vendor/autoload.php');
 
-new Blacking\TaskForce\Task(1);
+use Blacking\TaskForce\Task;
 
+new Task(1);
