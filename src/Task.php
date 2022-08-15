@@ -1,4 +1,5 @@
 <?php
+namespace Blacking\TaskForce;
 
 class Task {
     private $current_status;

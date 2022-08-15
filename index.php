@@ -1,6 +1,7 @@
 <?php
 
-require_once ('classes/Task.php');
+require_once ('vendor/autoload.php');
 
-$task = new Task(1);
+use Blacking\TaskForce\Task;
 
+new Task(1);
