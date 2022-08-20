@@ -2,6 +2,12 @@
 namespace Blacking\TaskForce;
 
 class Task {
+
+    private $action_cancel = new ActionCancel;
+    private $action_completion = new ActionCompletion;
+    private $action_response = new ActionResponce;
+    private $action_refusal = new ActionRefusal;
+
     private $current_status;
     private $id_executor;
     private $id_customer;
@@ -12,24 +18,12 @@ class Task {
     const STATUS_COMPLETED = 'completed';
     const STATUS_FAILED = 'failed';
 
-    const ACTION_COMPLETION = 'completion'; # заказчик
-    const ACTION_CANCEL = 'cancel';  # заказчик
-    const ACTION_START = 'start'; # заказчик
-
-    const ACTION_RESPONSE = 'response'; # исполнитель
-    const ACTION_REFUSAL = 'refusal'; # исполнитель
-
     const MAP_STATUS_ACTION = [
         'new' => 'Новое',
         'canceled' => 'Отменено',
         'in_work' => 'В работе',
         'completed' => 'Выполнено',
         'failed' => 'Провалено',
-        'completion' => 'Завершение',
-        'cancel' => 'Отменить',
-        'start' => 'Старт',
-        'response' => 'Отклик',
-        'refusal' => 'Отказ'
     ];
 
     public function __construct($id_user)
@@ -47,15 +41,15 @@ class Task {
         switch($this->current_status) {
             case self::STATUS_NEW:
                 if ($id_user === $this->id_customer) {
-                    return self::ACTION_CANCEL;
+                    return $this->action_cancel->rightsCheck;
                 }
-                return self::ACTION_RESPONSE;
+                return $this->action_response->rightsCheck;
             break;
             case self::STATUS_IN_WORK:
                 if ($id_user === $this->id_customer) {
-                    return self::ACTION_COMPLETION;
+                    return $this->action_completion->rightsCheck;
                 }
-                return self::ACTION_REFUSAL;
+                return $this->action_refusal->rightsCheck;
             break;
 
         }
