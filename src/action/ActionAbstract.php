@@ -1,5 +1,5 @@
 <?php
-namespace Blacking\TaskForce;
+namespace Blacking\TaskForce\action;
 
 abstract class ActionAbstract
 {
@@ -16,5 +16,5 @@ abstract class ActionAbstract
         return $this->internal_name;
     }
 
-    abstract protected function rightsCheck($executor_id, $customer_id, $user_id): bool;
+    abstract protected function rightsCheck(int $executor_id, int $customer_id, int $user_id): bool;
 }

@@ -1,5 +1,5 @@
 <?php
-namespace Blacking\TaskForce;
+namespace Blacking\TaskForce\action;
 
 class ActionResponce extends ActionAbstract
 {
@@ -8,7 +8,7 @@ class ActionResponce extends ActionAbstract
     protected string $name = 'Отклик';
     protected string $internal_name = self::ACTION_RESPONSE;
 
-    protected function rightsCheck($executor_id, $customer_id, $user_id): bool
+    protected function rightsCheck(int $executor_id, int $customer_id, int $user_id): bool
     {
         if ($executor_id === $user_id) {
             return true;
