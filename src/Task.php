@@ -3,10 +3,10 @@ namespace Blacking\TaskForce;
 
 class Task {
 
-    private $action_cancel = new ActionCancel;
-    private $action_completion = new ActionCompletion;
-    private $action_response = new ActionResponce;
-    private $action_refusal = new ActionRefusal;
+    private $action_cancel = new action\ActionCancel;
+    private $action_completion = new action\ActionCompletion;
+    private $action_response = new action\ActionResponce;
+    private $action_refusal = new action\ActionRefusal;
 
     private $current_status;
     private $id_executor;
@@ -26,18 +26,18 @@ class Task {
         'failed' => 'Провалено',
     ];
 
-    public function __construct($id_user)
+    public function __construct(int $id_user)
     {
         $this->current_status = self::STATUS_NEW;
         $this->id_customer = $id_user;
         $this->id_executor = null;
     }
 
-    public function get_current_status() {
+    public function get_current_status() :string {
         return $this->current_status;
     }
 
-    public function get_available_actions($id_user) {
+    public function get_available_actions(int $id_user): bool {
         switch($this->current_status) {
             case self::STATUS_NEW:
                 if ($id_user === $this->id_customer) {
@@ -51,7 +51,8 @@ class Task {
                 }
                 return $this->action_refusal->rightsCheck;
             break;
-
+            default:
+                throw new exception\ActionException("Cтатус не существует");
         }
     }
 }
