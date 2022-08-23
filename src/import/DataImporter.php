@@ -8,9 +8,11 @@ use Blacking\TaskForce\exception\SourceFileException;
 
 class DataImporter
 {
-    private  $filename;
-    private  $columns;
-    private  $fileObject;
+    private $filename;
+    private $columns;
+    private $fileObject;
+    private $table_sql_name;
+    private $sqlfilename;
 
     public function __construct(string $filename, array $columns, $table_sql_name, $sqlfilename)
     {
