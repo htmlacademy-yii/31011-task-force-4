@@ -4,7 +4,7 @@ namespace app\controllers;
 use app\models\Tasks;
 use yii\web\Controller;
 
-class TaskController extends Controller
+class TasksController extends Controller
 {
     public function actionIndex() {
         $query = Tasks::find();
