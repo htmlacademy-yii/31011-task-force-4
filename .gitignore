@@ -8,4 +8,4 @@
 Thumbs.db
 vendor
 .vscode
-./config/db.php
+config/db.php
